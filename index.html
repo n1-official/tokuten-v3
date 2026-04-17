@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Mastery 特典 | 株式会社エヌイチ 個別指導塾ご予約者限定</title>
-<meta name="description" content="株式会社エヌイチの個別指導塾をご予約いただいた方限定の事前学習教材。AIの全体像を理解し、個別面談当日に自分専用の次の一手を持ち帰る。">
+<title>AI Mastery 特典 | 株式会社エヌイチ</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,8 +17,8 @@
 <header class="header">
   <div class="header__inner">
     <a href="index.html" class="header__logo">
-      <span class="header__logo-dot"></span>
-      株式会社エヌイチ × AI Mastery
+      <span class="header__logo-mark">N1</span>
+      AI Mastery 特典
     </a>
     <a href="#" class="header__cta">個別予約はこちら</a>
   </div>
@@ -27,198 +26,317 @@
 
 <!-- Hero -->
 <section class="hero">
-  <div class="hero__bg"></div>
-  <div class="hero__orb hero__orb--1"></div>
-  <div class="hero__orb hero__orb--2"></div>
-  <div class="hero__orb hero__orb--3"></div>
-  <div class="container">
-    <div class="hero__content">
-      <p class="hero__badge">
-        <span class="hero__badge-dot"></span>
-        個別指導塾ご予約者限定特典
-      </p>
-      <h1 class="hero__title">
-        AIで人生を変える<br><em>"正しい地図"</em>を、君に。
-      </h1>
-      <p class="hero__subtitle">
-        2026年最新のAI情報を凝縮。<br>
-        個別面談の日に「自分専用の次の一手」を持ち帰るための教材です。
-      </p>
-      <div class="hero__stats">
-        <div class="hero__stat">
-          <span class="hero__stat-value counter" data-target="5">0</span>
-          <span class="hero__stat-label">パート</span>
-        </div>
-        <div class="hero__stat">
-          <span class="hero__stat-value counter" data-target="15">0</span>
-          <span class="hero__stat-label">本の動画</span>
-        </div>
-        <div class="hero__stat">
-          <span class="hero__stat-value counter" data-target="60">0</span>
-          <span class="hero__stat-label">分</span>
-        </div>
-      </div>
-      <div class="hero__actions">
-        <a href="part1/index.html" class="btn btn--primary">今すぐ学習を始める</a>
-        <a href="#courses" class="btn btn--outline">コース一覧を見る</a>
-      </div>
-    </div>
+  <p class="hero__badge">個別指導塾ご予約者限定特典</p>
+  <h1 class="hero__title">
+    AIで人生を変える<br><em>"正しい地図"</em>を、君に。
+  </h1>
+  <p class="hero__subtitle">
+    エヌイチが開催してきたAIセミナーを一挙公開。<br>
+    個別面談当日に「自分専用の次の一手」を持ち帰るための教材です。
+  </p>
+  <div class="hero__actions">
+    <a href="#courses" class="btn btn--primary">講座一覧を見る</a>
+    <button id="unlock-open-btn" class="btn btn--outline">パスワードで全解放</button>
   </div>
 </section>
 
-<!-- Course List -->
-<section class="section section--gray" id="courses">
-  <div class="container">
-    <div class="section__head reveal">
-      <p class="section__label">Curriculum</p>
-      <h2 class="section__title">学習コンテンツ</h2>
-      <p class="section__desc">Part 1・2は今すぐ無料で視聴できます。<br>個別予約後にすべてのパートが解放されます。</p>
+<!-- Page Body -->
+<div class="page-body" id="courses">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+
+    <!-- セミナー告知フレーム -->
+    <div class="sidebar-card">
+      <div class="sidebar-card__thumb">
+        <span class="sidebar-card__thumb-label">開催中</span>
+        <span style="font-size:12px;color:#aaa;">バナー画像</span>
+      </div>
+      <div class="sidebar-card__body">
+        <p class="sidebar-card__label">Next Seminar</p>
+        <p class="sidebar-card__title">セミナータイトルが入ります</p>
+        <p class="sidebar-card__desc">日程・内容などの告知テキストがここに入ります。</p>
+        <a href="#" class="btn btn--outline">詳細を見る</a>
+      </div>
     </div>
 
-    <div class="course-grid">
-
-      <!-- Part 1 (Free) -->
-      <a href="part1/index.html">
-        <div class="course-card reveal reveal-delay-1">
-          <div class="course-card__thumb">
-            <span class="course-card__part-num">Part 1</span>
-            <span class="course-card__badge course-card__badge--free">無料</span>
-            <div class="course-card__play">
-              <svg viewBox="0 0 16 16"><path d="M4 2l10 6-10 6z"/></svg>
-            </div>
-          </div>
-          <div class="course-card__body">
-            <p class="course-card__title">AIとは何か — 基礎から正しく理解する</p>
-            <p class="course-card__meta">
-              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 1.5a5.5 5.5 0 110 11 5.5 5.5 0 010-11zM7.25 5v3.44l2.65 1.53.75-1.3-2.15-1.24V5z"/></svg>
-              約12分
-            </p>
-          </div>
-        </div>
-      </a>
-
-      <!-- Part 2 (Free) -->
-      <a href="part2/index.html">
-        <div class="course-card reveal reveal-delay-2">
-          <div class="course-card__thumb">
-            <span class="course-card__part-num">Part 2</span>
-            <span class="course-card__badge course-card__badge--free">無料</span>
-            <div class="course-card__play">
-              <svg viewBox="0 0 16 16"><path d="M4 2l10 6-10 6z"/></svg>
-            </div>
-          </div>
-          <div class="course-card__body">
-            <p class="course-card__title">主要AIツールの全体像と使い分け</p>
-            <p class="course-card__meta">
-              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 1.5a5.5 5.5 0 110 11 5.5 5.5 0 010-11zM7.25 5v3.44l2.65 1.53.75-1.3-2.15-1.24V5z"/></svg>
-              約14分
-            </p>
-          </div>
-        </div>
-      </a>
-
-      <!-- Part 3 (Locked) -->
-      <div class="course-card course-card--locked reveal reveal-delay-3" data-href="part3/index.html">
-        <div class="course-card__thumb">
-          <span class="course-card__part-num">Part 3</span>
-          <span class="course-card__badge course-card__badge--locked">予約後解放</span>
-          <div class="course-card__lock">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-          </div>
-        </div>
-        <div class="course-card__body">
-          <p class="course-card__title">AI副業の全体像 — 自分に合った道を選ぶ</p>
-          <p class="course-card__meta">
-            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 1.5a5.5 5.5 0 110 11 5.5 5.5 0 010-11zM7.25 5v3.44l2.65 1.53.75-1.3-2.15-1.24V5z"/></svg>
-            約11分
-          </p>
-        </div>
+    <!-- 個別指導塾CTA -->
+    <div class="sidebar-card">
+      <div class="sidebar-card__thumb">
+        <span class="sidebar-card__thumb-label">募集中</span>
+        <span style="font-size:12px;color:#aaa;">バナー画像</span>
       </div>
-
-      <!-- Part 4 (Locked) -->
-      <div class="course-card course-card--locked reveal reveal-delay-1" data-href="part4/index.html">
-        <div class="course-card__thumb">
-          <span class="course-card__part-num">Part 4</span>
-          <span class="course-card__badge course-card__badge--locked">予約後解放</span>
-          <div class="course-card__lock">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-          </div>
-        </div>
-        <div class="course-card__body">
-          <p class="course-card__title">プロンプトの書き方 — 質問力で差をつける</p>
-          <p class="course-card__meta">
-            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 1.5a5.5 5.5 0 110 11 5.5 5.5 0 010-11zM7.25 5v3.44l2.65 1.53.75-1.3-2.15-1.24V5z"/></svg>
-            約13分
-          </p>
-        </div>
+      <div class="sidebar-card__body">
+        <p class="sidebar-card__label">個別指導塾</p>
+        <p class="sidebar-card__title">あなた専用の「次の一手」を一緒に見つける</p>
+        <p class="sidebar-card__desc">現状を整理し、AI活用の最短ルートをご提案します。</p>
+        <a href="#" class="btn btn--primary">無料で相談する</a>
       </div>
-
-      <!-- Part 5 (Locked) -->
-      <div class="course-card course-card--locked reveal reveal-delay-2" data-href="part5/index.html">
-        <div class="course-card__thumb">
-          <span class="course-card__part-num">Part 5</span>
-          <span class="course-card__badge course-card__badge--locked">予約後解放</span>
-          <div class="course-card__lock">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-          </div>
-        </div>
-        <div class="course-card__body">
-          <p class="course-card__title">個別面談を最大化する — 当日の準備と心構え</p>
-          <p class="course-card__meta">
-            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 1.5a5.5 5.5 0 110 11 5.5 5.5 0 010-11zM7.25 5v3.44l2.65 1.53.75-1.3-2.15-1.24V5z"/></svg>
-            約10分
-          </p>
-        </div>
-      </div>
-
     </div>
+
+  </aside>
+
+  <!-- Main: Course Rows -->
+  <main class="main-content">
 
     <!-- Unlock Banner -->
     <div class="unlock-banner reveal">
       <div class="unlock-banner__text">
-        <p class="unlock-banner__label">For Reserved Members</p>
         <p class="unlock-banner__title">予約完了された方へ</p>
-        <p class="unlock-banner__desc">
-          個別指導塾の予約後にLINEでお送りするパスワードを入力すると、<br>
-          すべての動画が解放されます。
-        </p>
+        <p class="unlock-banner__desc">LINEでお送りしたパスワードを入力するとすべての講座が解放されます。</p>
       </div>
-      <button id="unlock-open-btn" class="btn btn--primary">パスワードを入力する</button>
+      <button id="unlock-open-btn-2" class="btn btn--primary">パスワードを入力</button>
     </div>
-  </div>
-</section>
+
+    <!-- Row 1 -->
+    <section class="course-row reveal">
+      <div class="course-row__head">
+        <h2 class="course-row__title">カテゴリ1</h2>
+        <a href="#" class="course-row__more">もっと見る →</a>
+      </div>
+      <div class="course-scroll">
+        <!-- 無料カード × 2 -->
+        <a href="course/index.html" class="course-card">
+          <div class="course-card__thumb">
+            <div class="course-card__thumb-placeholder"></div>
+            <span class="course-card__free-badge">無料</span>
+            <span class="course-card__duration">0:00:00</span>
+          </div>
+          <div class="course-card__body">
+            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
+            <div class="course-card__meta">
+              <span class="course-card__tag">カテゴリ</span>
+              <span class="course-card__tag">初級</span>
+            </div>
+          </div>
+        </a>
+        <a href="course/index.html" class="course-card">
+          <div class="course-card__thumb">
+            <div class="course-card__thumb-placeholder"></div>
+            <span class="course-card__free-badge">無料</span>
+            <span class="course-card__duration">0:00:00</span>
+          </div>
+          <div class="course-card__body">
+            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
+            <div class="course-card__meta">
+              <span class="course-card__tag">カテゴリ</span>
+              <span class="course-card__tag">初級</span>
+            </div>
+          </div>
+        </a>
+        <!-- ロックカード × 3 -->
+        <div class="course-card course-card--locked">
+          <div class="course-card__thumb">
+            <div class="course-card__thumb-placeholder"></div>
+            <div class="course-card__lock-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+            <span class="course-card__duration">0:00:00</span>
+          </div>
+          <div class="course-card__body">
+            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
+            <div class="course-card__meta">
+              <span class="course-card__tag">カテゴリ</span>
+              <span class="course-card__tag">中級</span>
+            </div>
+          </div>
+        </div>
+        <div class="course-card course-card--locked">
+          <div class="course-card__thumb">
+            <div class="course-card__thumb-placeholder"></div>
+            <div class="course-card__lock-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+            <span class="course-card__duration">0:00:00</span>
+          </div>
+          <div class="course-card__body">
+            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
+            <div class="course-card__meta">
+              <span class="course-card__tag">カテゴリ</span>
+              <span class="course-card__tag">中級</span>
+            </div>
+          </div>
+        </div>
+        <div class="course-card course-card--locked">
+          <div class="course-card__thumb">
+            <div class="course-card__thumb-placeholder"></div>
+            <div class="course-card__lock-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+            <span class="course-card__duration">0:00:00</span>
+          </div>
+          <div class="course-card__body">
+            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
+            <div class="course-card__meta">
+              <span class="course-card__tag">カテゴリ</span>
+              <span class="course-card__tag">応用</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Row 2 -->
+    <section class="course-row reveal">
+      <div class="course-row__head">
+        <h2 class="course-row__title">カテゴリ2</h2>
+        <a href="#" class="course-row__more">もっと見る →</a>
+      </div>
+      <div class="course-scroll">
+        <a href="course/index.html" class="course-card">
+          <div class="course-card__thumb">
+            <div class="course-card__thumb-placeholder"></div>
+            <span class="course-card__free-badge">無料</span>
+            <span class="course-card__duration">0:00:00</span>
+          </div>
+          <div class="course-card__body">
+            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
+            <div class="course-card__meta">
+              <span class="course-card__tag">カテゴリ</span>
+              <span class="course-card__tag">初級</span>
+            </div>
+          </div>
+        </a>
+        <div class="course-card course-card--locked">
+          <div class="course-card__thumb">
+            <div class="course-card__thumb-placeholder"></div>
+            <div class="course-card__lock-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+            <span class="course-card__duration">0:00:00</span>
+          </div>
+          <div class="course-card__body">
+            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
+            <div class="course-card__meta">
+              <span class="course-card__tag">カテゴリ</span>
+              <span class="course-card__tag">中級</span>
+            </div>
+          </div>
+        </div>
+        <div class="course-card course-card--locked">
+          <div class="course-card__thumb">
+            <div class="course-card__thumb-placeholder"></div>
+            <div class="course-card__lock-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+            <span class="course-card__duration">0:00:00</span>
+          </div>
+          <div class="course-card__body">
+            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
+            <div class="course-card__meta">
+              <span class="course-card__tag">カテゴリ</span>
+              <span class="course-card__tag">中級</span>
+            </div>
+          </div>
+        </div>
+        <div class="course-card course-card--locked">
+          <div class="course-card__thumb">
+            <div class="course-card__thumb-placeholder"></div>
+            <div class="course-card__lock-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+            <span class="course-card__duration">0:00:00</span>
+          </div>
+          <div class="course-card__body">
+            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
+            <div class="course-card__meta">
+              <span class="course-card__tag">カテゴリ</span>
+              <span class="course-card__tag">応用</span>
+            </div>
+          </div>
+        </div>
+        <div class="course-card course-card--locked">
+          <div class="course-card__thumb">
+            <div class="course-card__thumb-placeholder"></div>
+            <div class="course-card__lock-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+            <span class="course-card__duration">0:00:00</span>
+          </div>
+          <div class="course-card__body">
+            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
+            <div class="course-card__meta">
+              <span class="course-card__tag">カテゴリ</span>
+              <span class="course-card__tag">応用</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Row 3 -->
+    <section class="course-row reveal">
+      <div class="course-row__head">
+        <h2 class="course-row__title">カテゴリ3</h2>
+        <a href="#" class="course-row__more">もっと見る →</a>
+      </div>
+      <div class="course-scroll">
+        <a href="course/index.html" class="course-card">
+          <div class="course-card__thumb">
+            <div class="course-card__thumb-placeholder"></div>
+            <span class="course-card__free-badge">無料</span>
+            <span class="course-card__duration">0:00:00</span>
+          </div>
+          <div class="course-card__body">
+            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
+            <div class="course-card__meta">
+              <span class="course-card__tag">カテゴリ</span>
+              <span class="course-card__tag">初級</span>
+            </div>
+          </div>
+        </a>
+        <div class="course-card course-card--locked">
+          <div class="course-card__thumb">
+            <div class="course-card__thumb-placeholder"></div>
+            <div class="course-card__lock-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+            <span class="course-card__duration">0:00:00</span>
+          </div>
+          <div class="course-card__body">
+            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
+            <div class="course-card__meta">
+              <span class="course-card__tag">カテゴリ</span>
+              <span class="course-card__tag">中級</span>
+            </div>
+          </div>
+        </div>
+        <div class="course-card course-card--locked">
+          <div class="course-card__thumb">
+            <div class="course-card__thumb-placeholder"></div>
+            <div class="course-card__lock-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+            <span class="course-card__duration">0:00:00</span>
+          </div>
+          <div class="course-card__body">
+            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
+            <div class="course-card__meta">
+              <span class="course-card__tag">カテゴリ</span>
+              <span class="course-card__tag">中級</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
 
 <!-- Footer -->
 <footer class="footer">
-  <div class="container">
-    <p class="footer__logo">株式会社エヌイチ × AI Mastery</p>
-    <nav class="footer__links">
-      <a href="index.html">トップ</a>
-      <a href="#courses">コース一覧</a>
-      <a href="#">個別予約</a>
-    </nav>
-    <p>&copy; 2026 株式会社エヌイチ. All rights reserved.</p>
-  </div>
+  <p class="footer__logo">株式会社エヌイチ × AI Mastery</p>
+  <p>&copy; 2026 株式会社エヌイチ. All rights reserved.</p>
 </footer>
 
 <!-- Unlock Modal -->
-<div class="modal-overlay" id="unlock-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+<div class="modal-overlay" id="unlock-modal">
   <div class="modal">
-    <button class="modal__close" id="unlock-close-btn" aria-label="閉じる">&times;</button>
-    <h2 class="modal__title" id="modal-title">パスワードを入力</h2>
-    <p class="modal__desc">
-      個別指導塾のご予約後にLINEでお送りしたパスワードを<br>
-      入力してください。全パートが解放されます。
-    </p>
+    <button class="modal__close" id="unlock-close-btn">&times;</button>
+    <h2 class="modal__title">パスワードを入力</h2>
+    <p class="modal__desc">予約後にLINEでお送りしたパスワードを入力してください。すべての講座が解放されます。</p>
     <form id="unlock-form">
-      <input
-        type="text"
-        id="unlock-input"
-        class="modal__input"
-        placeholder="パスワードを入力"
-        autocomplete="off"
-        autocapitalize="characters"
-      >
+      <input type="text" id="unlock-input" class="modal__input" placeholder="パスワードを入力" autocomplete="off" autocapitalize="characters">
       <p class="modal__error" id="unlock-error">パスワードが正しくありません</p>
       <div class="modal__actions">
         <button type="submit" class="btn btn--primary" style="flex:1">解放する</button>
@@ -228,10 +346,13 @@
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="js/unlock.js"></script>
 <script src="js/main.js"></script>
 <script>
+  // 2つ目の解放ボタン
+  document.getElementById('unlock-open-btn-2')?.addEventListener('click', () => {
+    document.getElementById('unlock-modal').classList.add('is-open')
+  })
   document.getElementById('unlock-cancel-btn')?.addEventListener('click', () => {
     document.getElementById('unlock-modal').classList.remove('is-open')
   })
