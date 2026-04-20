@@ -241,6 +241,10 @@ img { max-width: 100%; display: block; }
   /* clip bottom ~10% to hide CTA button */
   clip-path: inset(0 0 10% 0 round 12px);
 }
+.sidebar-banner--full {
+  clip-path: none;
+  border-radius: 12px;
+}
 .sidebar-banner:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0,0,0,0.15);
