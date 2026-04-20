@@ -8,8 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=7">
-<link rel="stylesheet" href="css/animations.css?v=7">
+<link rel="stylesheet" href="css/style.css?v=8">
+<link rel="stylesheet" href="css/animations.css?v=8">
 </head>
 <body>
 
@@ -313,6 +313,21 @@
   <p>&copy; 2026 株式会社エヌイチ. All rights reserved.</p>
 </footer>
 
+<!-- Welcome Video Modal -->
+<div class="video-modal-overlay" id="video-modal">
+  <div class="video-modal">
+    <button class="video-modal__close" id="video-modal-close">&times;</button>
+    <div class="video-modal__frame">
+      <iframe
+        id="welcome-video"
+        src="https://www.youtube-nocookie.com/embed/4mNfTczF5PQ?rel=0&modestbranding=1"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</div>
+
 <!-- Unlock Modal -->
 <div class="modal-overlay" id="unlock-modal">
   <div class="modal">
@@ -330,6 +345,7 @@
   </div>
 </div>
 
+<script src="js/video-modal.js?v=1"></script>
 <script src="js/unlock.js"></script>
 <script src="js/main.js"></script>
 <script src="js/popup.js?v=1"></script>
