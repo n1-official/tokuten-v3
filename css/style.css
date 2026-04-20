@@ -102,7 +102,7 @@ img { max-width: 100%; display: block; }
 =========================== */
 .hero {
   position: relative;
-  background: url('../assets/images/PH018.jpg') center 20% / cover no-repeat;
+  background: url('../assets/images/PH018.jpg') 72% 20% / 130% auto no-repeat;
   min-height: 85vh;
   display: flex;
   align-items: center;
