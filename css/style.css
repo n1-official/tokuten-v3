@@ -231,6 +231,25 @@ img { max-width: 100%; display: block; }
   flex-direction: column;
   gap: 16px;
 }
+.sidebar-banner {
+  display: block;
+  border-radius: 12px;
+  overflow: hidden;
+  line-height: 0;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* clip bottom ~10% to hide CTA button */
+  clip-path: inset(0 0 10% 0 round 12px);
+}
+.sidebar-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+.sidebar-banner img {
+  width: 100%;
+  display: block;
+}
+
 .sidebar-card {
   background: #fff;
   border: 1px solid var(--color-border);
