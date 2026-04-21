@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>診断結果 | AI Mastery 特典</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/quiz.css">
+</head>
+<body class="quiz-result-page">
+
+<div class="quiz-bg" aria-hidden="true">
+  <canvas class="quiz-bg__canvas" id="result-canvas"></canvas>
+  <div class="quiz-bg__vignette"></div>
+</div>
+
+<div class="result-page">
+  <header class="result-page__header">
+    <a class="result-page__back" href="../index.html">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 12H4M10 18l-6-6 6-6"/></svg>
+      <span>特典トップへ戻る</span>
+    </a>
+  </header>
+  <div class="result-page__body">
+    <div class="result-card" id="result-card">
+      <div class="result-card__badge">Your Type</div>
+      <p class="result-card__name" id="result-name">--</p>
+      <p class="result-card__headline" id="result-headline">--</p>
+      <div class="result-card__divider"></div>
+      <p class="result-card__desc" id="result-desc">--</p>
+      <div class="result-card__actions">
+        <a href="../index.html" class="result-btn result-btn--primary">講座一覧に戻る</a>
+        <a href="index.html" class="result-btn result-btn--ghost">もう一度診断する</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const TYPES = {
+    writer: {
+      name: "ライティング職人",
+      headline: "言葉でAI時代を切り拓くプロ",
+      desc: "あなたの強みは「言語化力」。AIをパートナーに、文章・コピー・コンテンツで圧倒的な価値を生み出せます。言葉は最強の武器。AIと組み合わせることで、あなたの表現力はさらに輝きます。",
+    },
+    sns: {
+      name: "SNS運用プロデューサー",
+      headline: "影響力を数字に変える戦略家",
+      desc: "あなたの強みは「発信力と巻き込み力」。AIでコンテンツを量産しながら、フォロワーをファンに変える仕組みを設計できます。バズを作るだけでなく、それを収益に変える視点も持っています。",
+    },
+    strategist: {
+      name: "AIビジネス戦略家",
+      headline: "数字と構造でゲームを支配する",
+      desc: "あなたの強みは「全体俯瞰力と論理思考」。AIをフル活用して、誰も見えていない勝ち筋を設計できる人材です。感情ではなくデータで動き、長期で圧倒的な成果を積み上げます。",
+    },
+    creator: {
+      name: "AIクリエイター",
+      headline: "表現×AIで唯一無二の世界を創る",
+      desc: "あなたの強みは「独創性とスピード」。AIとの共創で、誰も真似できないコンテンツやプロダクトを生み出せます。好奇心と実行力が最大の資産です。",
+    },
+    efficiency: {
+      name: "効率化マニア",
+      headline: "作業時間ゼロを目指す自動化の達人",
+      desc: "あなたの強みは「仕組み化思考」。AIで業務を自動化し、本当に大切なことに集中できる環境を作れます。「手を動かさずに結果を出す」ことへの情熱が誰よりも強いタイプです。",
+    },
+    researcher: {
+      name: "リサーチャー",
+      headline: "深掘りと分析でインサイトを生む",
+      desc: "あなたの強みは「探究心と分析力」。AIと組み合わせることで、誰よりも深い洞察を素早く導き出せます。「なぜ？」を問い続ける姿勢が、差別化の源泉になります。",
+    },
+    evangelist: {
+      name: "AI伝道師",
+      headline: "教えることで自分も成長するリーダー",
+      desc: "あなたの強みは「共感力と伝達力」。AI知識を人に教えながら、自分のブランドと影響力を築けます。「わかりやすく伝える」能力は、AI時代に最も求められるスキルの一つです。",
+    },
+    builder: {
+      name: "プロダクトビルダー",
+      headline: "ゼロからサービスを生み出す設計者",
+      desc: "あなたの強みは「構築力と実行力」。AIを使ってプロダクトやサービスを自ら作り上げる力を持っています。アイデアを形にするスピードと、完成まで諦めない粘り強さが武器です。",
+    },
+  };
+
+  const params = new URLSearchParams(window.location.search);
+  let typeKey = params.get("type");
+  if (!typeKey || !TYPES[typeKey]) {
+    try {
+      const saved = JSON.parse(localStorage.getItem("n1ai.diagnosis") || "{}");
+      typeKey = saved.type || "creator";
+    } catch (e) { typeKey = "creator"; }
+  }
+  if (!TYPES[typeKey]) typeKey = "creator";
+
+  const t = TYPES[typeKey];
+  document.querySelector("#result-name").textContent = t.name;
+  document.querySelector("#result-headline").textContent = t.headline;
+  document.querySelector("#result-desc").textContent = t.desc;
+  document.title = `${t.name} | AI Mastery 特典`;
+
+  // Ambient canvas
+  const canvas = document.getElementById("result-canvas");
+  if (canvas && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const ctx = canvas.getContext("2d");
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let w, h, particles;
+    const resize = () => {
+      w = canvas.clientWidth; h = canvas.clientHeight;
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    const spawn = () => {
+      const count = Math.min(80, Math.floor((w * h) / 28000));
+      particles = new Array(count).fill(0).map(() => ({
+        x: Math.random() * w, y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.1,
+        vy: (Math.random() - 0.5) * 0.1 + 0.03,
+        r: 0.5 + Math.random() * 1.4,
+        a: 0.04 + Math.random() * 0.14,
+      }));
+    };
+    resize(); spawn();
+    window.addEventListener("resize", () => { resize(); spawn(); });
+    const tick = () => {
+      ctx.clearRect(0, 0, w, h);
+      for (const p of particles) {
+        p.x += p.vx; p.y += p.vy;
+        if (p.y > h + 4) { p.y = -4; p.x = Math.random() * w; }
+        if (p.x < -4) p.x = w + 4;
+        if (p.x > w + 4) p.x = -4;
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(127,212,216,${p.a})`;
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  // Entrance animation
+  const card = document.getElementById("result-card");
+  card.style.opacity = "0";
+  card.style.transform = "translateY(24px)";
+  setTimeout(() => {
+    card.style.transition = "opacity 700ms cubic-bezier(0.16,1,0.3,1), transform 700ms cubic-bezier(0.16,1,0.3,1)";
+    card.style.opacity = "1";
+    card.style.transform = "translateY(0)";
+  }, 80);
+})();
+</script>
+
+</body>
+</html>
