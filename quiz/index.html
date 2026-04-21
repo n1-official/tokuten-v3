@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>AI適性診断 | AI Mastery 特典</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/quiz.css">
+</head>
+<body class="quiz-page">
+
+<div class="quiz-bg" aria-hidden="true">
+  <canvas class="quiz-bg__canvas" data-quiz-canvas></canvas>
+  <div class="quiz-bg__vignette"></div>
+</div>
+
+<main class="quiz" data-quiz>
+
+  <header class="quiz__header">
+    <a class="quiz__back" href="../index.html">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 12H4M10 18l-6-6 6-6"/></svg>
+      <span>特典トップへ戻る</span>
+    </a>
+    <div class="quiz__progress">
+      <div class="quiz__progress-meta">
+        <span class="quiz__progress-current" data-qcurrent>01</span>
+        <span class="quiz__progress-sep"> / </span>
+        <span class="quiz__progress-total" data-qtotal>12</span>
+      </div>
+      <div class="quiz__progress-bar">
+        <div class="quiz__progress-bar-fill" data-qbar></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="quiz__stage" data-quiz-stage>
+    <div class="quiz__question" data-quiz-question>
+      <div class="quiz__eyebrow" data-qeyebrow>Question 01</div>
+      <h1 class="quiz__title" data-qtitle>質問がここに表示されます</h1>
+      <div class="quiz__options" data-qoptions></div>
+    </div>
+  </section>
+
+  <footer class="quiz__footer">
+    <button class="quiz__prev" type="button" data-qprev>
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M20 12H4M10 18l-6-6 6-6"/></svg>
+      <span>戻る</span>
+    </button>
+    <div class="quiz__hint">
+      <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><kbd>4</kbd>
+      <span>キーボードでも選べます</span>
+    </div>
+  </footer>
+
+</main>
+
+<section class="quiz-result" data-quiz-result hidden>
+  <div class="quiz-result__inner">
+    <div class="quiz-result__spinner" aria-hidden="true">
+      <svg viewBox="0 0 120 120" width="120" height="120">
+        <circle cx="60" cy="60" r="46" fill="none" stroke="rgba(127,212,216,0.2)" stroke-width="1"/>
+        <circle class="quiz-result__arc" cx="60" cy="60" r="46" fill="none" stroke="#7FD4D8" stroke-width="2" stroke-dasharray="289" stroke-dashoffset="289" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+      </svg>
+    </div>
+    <h2 class="quiz-result__title">あなたのタイプを、<br>言葉にしています。</h2>
+    <p class="quiz-result__note" data-qresult-note>診断結果を集計中...</p>
+  </div>
+</section>
+
+<script src="../js/quiz.js" defer></script>
+
+</body>
+</html>
