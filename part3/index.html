@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/animations.css">
+<link rel="stylesheet" href="../css/part-quiz.css">
 </head>
 <body>
 
@@ -75,6 +76,31 @@
     </div>
   </section>
 
+  <!-- Quiz -->
+  <section class="part-quiz" data-part-quiz>
+    <div class="container--narrow">
+      <div class="part-quiz__head">
+        <span class="part-quiz__title">理解度チェック</span>
+        <span class="part-quiz__count">全3問</span>
+      </div>
+      <div class="part-quiz__questions" data-quiz-questions></div>
+      <div class="part-quiz__footer">
+        <span class="part-quiz__answered-count"><span data-answered-count>0</span> / <span data-total-count>3</span> 問回答済み</span>
+        <button class="part-quiz__submit" data-quiz-submit type="button" disabled>採点する</button>
+      </div>
+      <div class="part-quiz__result" data-quiz-result hidden>
+        <div>
+          <p class="part-quiz__score-label">スコア</p>
+          <p class="part-quiz__score-value" data-score-value></p>
+        </div>
+        <p class="part-quiz__result-msg" data-result-msg></p>
+        <div class="part-quiz__breakdown" data-breakdown></div>
+        <div class="part-quiz__explanations" data-explanations></div>
+        <div class="part-quiz__actions" data-result-actions></div>
+      </div>
+    </div>
+  </section>
+
   <nav class="part-nav">
     <div class="container--narrow">
       <div class="part-nav__inner">
@@ -100,6 +126,7 @@
 
 <script src="../js/unlock.js"></script>
 <script src="../js/main.js"></script>
-<script>guardLockedPage(3)</script>
+<script src="../js/part-quiz.js"></script>
+<script>guardLockedPage(3); initPartQuiz(3)</script>
 </body>
 </html>
