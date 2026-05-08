@@ -84,49 +84,6 @@
 .hero-anim--subtitle { animation: fadeInUp   0.8s ease 1.0s both; }
 .hero-anim--actions  { animation: fadeInUp   0.7s ease 1.35s both; }
 
-/* Typewriter mode（CSSのみ・JS不要） */
-.hero.is-typewriter .hero-anim--title {
-  animation: none;
-  opacity: 1;
-}
-
-/* 各文字: --i (0,1,2,...) に応じて表示遅延 */
-.hero.is-typewriter .t-char {
-  opacity: 0;
-  animation: charReveal 0.05s linear both;
-  animation-delay: calc(var(--i) * 0.09s + 0.6s);
-}
-@keyframes charReveal {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-/* カーソル：白いブロックで点滅、タイプ完了後にフェードアウト */
-.hero.is-typewriter .hero__cursor {
-  display: inline-block;
-  width: 0.08em;
-  height: 0.95em;
-  margin-left: 0.06em;
-  background: rgba(255, 255, 255, 0.92);
-  vertical-align: -0.05em;
-  animation: blink 0.6s step-end infinite, cursorFade 0.4s 3.4s forwards;
-}
-@keyframes cursorFade {
-  to { opacity: 0; visibility: hidden; }
-}
-
-/* タイプ完了後にサブタイトル・ボタンをフェードイン（既定の遅延を上書き） */
-.hero.is-typewriter .hero-anim--subtitle {
-  animation: fadeInUp 0.8s ease 2.8s both;
-}
-.hero.is-typewriter .hero-anim--actions {
-  animation: fadeInUp 0.7s ease 3.05s both;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero.is-typewriter .t-char { animation: none; opacity: 1; }
-  .hero.is-typewriter .hero__cursor { display: none; }
-}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
