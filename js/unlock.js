@@ -1,24 +1,18 @@
-// unlock.js — Stage 毎の独立パスワード方式
-// Stage 2, Stage 3 にそれぞれ独立したパスワードを設定（現在は両方 '1234'）
+// unlock.js — 共通パスワード方式
+// 1つのパスワードを入力すれば全Stageが解放される
 
-const STAGE_PASSWORDS = {
-  '2': '1234',
-  '3': '1234',
-}
+const UNLOCK_PASSWORD = '1234'
 const STAGE_KEY = (stage) => 'n1_tokuten_stage_' + stage + '_unlocked'
+const ALL_STAGES = ['2', '3']
 
 function isStageUnlocked(stage) {
   return localStorage.getItem(STAGE_KEY(String(stage))) === 'true'
 }
 
 function tryUnlockStage(stage, input) {
-  const pw = STAGE_PASSWORDS[String(stage)]
-  if (!pw) return false
-  if ((input || '').trim() === pw) {
-    localStorage.setItem(STAGE_KEY(String(stage)), 'true')
-    return true
-  }
-  return false
+  if ((input || '').trim() !== UNLOCK_PASSWORD) return false
+  ALL_STAGES.forEach((s) => localStorage.setItem(STAGE_KEY(s), 'true'))
+  return true
 }
 
 function unlockCard(card) {
@@ -55,9 +49,9 @@ function openUnlockModal(stage) {
   const input = document.getElementById('unlock-input')
   const error = document.getElementById('unlock-error')
 
-  overlay.dataset.stage = String(stage)
-  if (titleEl) titleEl.textContent = `Stage ${stage} のパスワードを入力`
-  if (descEl) descEl.textContent = `Stage ${stage} を解放するためのパスワードを入力してください。`
+  overlay.dataset.stage = String(stage || 2)
+  if (titleEl) titleEl.textContent = 'パスワードを入力'
+  if (descEl) descEl.textContent = '配布されたパスワードを入力すると、全ステージの講座が解放されます。'
   if (error) error.classList.remove('is-visible')
   if (input) {
     input.value = ''
@@ -121,22 +115,16 @@ function initUnlockModal() {
   })
 }
 
-function showUnlockSuccess(stage) {
+function showUnlockSuccess() {
   const banner = document.querySelector('.unlock-banner')
   if (!banner) return
-  const allUnlocked = Object.keys(STAGE_PASSWORDS).every((s) => isStageUnlocked(s))
-  if (allUnlocked) {
-    banner.innerHTML = `
-      <div style="text-align:center;width:100%">
-        <div style="font-size:2rem;margin-bottom:8px">&#10003;</div>
-        <p style="font-weight:700;font-size:1.1rem;color:var(--color-primary)">全ステージが解放されました</p>
-        <p style="font-size:14px;color:var(--color-text-muted);margin-top:6px">下のコース一覧からすべてのパートにアクセスできます</p>
-      </div>
-    `
-  } else {
-    const titleEl = banner.querySelector('.unlock-banner__title')
-    if (titleEl) titleEl.textContent = `Stage ${stage} が解放されました`
-  }
+  banner.innerHTML = `
+    <div style="text-align:center;width:100%">
+      <div style="font-size:2rem;margin-bottom:8px">&#10003;</div>
+      <p style="font-weight:700;font-size:1.1rem;color:var(--color-primary)">全ステージが解放されました</p>
+      <p style="font-size:14px;color:var(--color-text-muted);margin-top:6px">下のコース一覧からすべてのパートにアクセスできます</p>
+    </div>
+  `
 }
 
 // Part ページのアクセス制限

@@ -40,7 +40,7 @@
     </p>
     <div class="hero__actions hero-anim hero-anim--actions">
       <a href="#courses" class="btn btn--primary">講座一覧を見る</a>
-      <button id="unlock-open-btn" class="btn btn--ghost">パスワードで全解放</button>
+      <button id="unlock-open-btn" class="btn btn--ghost">パスワードを入力</button>
     </div>
   </div>
 </section>
@@ -93,8 +93,7 @@
         <p class="unlock-banner__desc">配布されたパスワードを入力すると、対応するステージの講座が解放されます。</p>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <button data-unlock-stage="2" class="btn btn--primary">Stage 2 を解放</button>
-        <button data-unlock-stage="3" class="btn btn--outline">Stage 3 を解放</button>
+        <button data-unlock-stage="2" class="btn btn--primary">Stageを解放</button>
       </div>
     </div>
 
@@ -102,226 +101,27 @@
     <section class="course-row reveal" data-stage="1">
       <div class="course-row__head">
         <h2 class="course-row__title">Stage 1</h2>
-        <a href="#" class="course-row__more">もっと見る →</a>
+        <a href="stage/1/index.html" class="course-row__more">もっと見る →</a>
       </div>
-      <div class="course-scroll">
-        <!-- 無料カード × 2 -->
-        <a href="course/index.html" class="course-card">
-          <div class="course-card__thumb">
-            <div class="course-card__thumb-placeholder"></div>
-            <span class="course-card__free-badge">無料</span>
-            <span class="course-card__duration">0:00:00</span>
-          </div>
-          <div class="course-card__body">
-            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
-            <div class="course-card__meta">
-              <span class="course-card__tag">カテゴリ</span>
-              <span class="course-card__tag">初級</span>
-            </div>
-          </div>
-        </a>
-        <a href="course/index.html" class="course-card">
-          <div class="course-card__thumb">
-            <div class="course-card__thumb-placeholder"></div>
-            <span class="course-card__free-badge">無料</span>
-            <span class="course-card__duration">0:00:00</span>
-          </div>
-          <div class="course-card__body">
-            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
-            <div class="course-card__meta">
-              <span class="course-card__tag">カテゴリ</span>
-              <span class="course-card__tag">初級</span>
-            </div>
-          </div>
-        </a>
-        <!-- 無料カード × 3（Stage 1 は全員見れる） -->
-        <a href="course/index.html" class="course-card">
-          <div class="course-card__thumb">
-            <div class="course-card__thumb-placeholder"></div>
-            <span class="course-card__free-badge">無料</span>
-            <span class="course-card__duration">0:00:00</span>
-          </div>
-          <div class="course-card__body">
-            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
-            <div class="course-card__meta">
-              <span class="course-card__tag">カテゴリ</span>
-              <span class="course-card__tag">中級</span>
-            </div>
-          </div>
-        </a>
-        <a href="course/index.html" class="course-card">
-          <div class="course-card__thumb">
-            <div class="course-card__thumb-placeholder"></div>
-            <span class="course-card__free-badge">無料</span>
-            <span class="course-card__duration">0:00:00</span>
-          </div>
-          <div class="course-card__body">
-            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
-            <div class="course-card__meta">
-              <span class="course-card__tag">カテゴリ</span>
-              <span class="course-card__tag">中級</span>
-            </div>
-          </div>
-        </a>
-        <a href="course/index.html" class="course-card">
-          <div class="course-card__thumb">
-            <div class="course-card__thumb-placeholder"></div>
-            <span class="course-card__free-badge">無料</span>
-            <span class="course-card__duration">0:00:00</span>
-          </div>
-          <div class="course-card__body">
-            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
-            <div class="course-card__meta">
-              <span class="course-card__tag">カテゴリ</span>
-              <span class="course-card__tag">応用</span>
-            </div>
-          </div>
-        </a>
-      </div>
+      <div class="course-scroll" data-stage-scroll="1"></div>
     </section>
 
     <!-- Row 2 -->
     <section class="course-row reveal" data-stage="2">
       <div class="course-row__head">
         <h2 class="course-row__title">Stage 2</h2>
-        <a href="#" class="course-row__more">もっと見る →</a>
+        <a href="stage/2/index.html" class="course-row__more">もっと見る →</a>
       </div>
-      <div class="course-scroll">
-        <a href="course/index.html" class="course-card">
-          <div class="course-card__thumb">
-            <div class="course-card__thumb-placeholder"></div>
-            <span class="course-card__free-badge">無料</span>
-            <span class="course-card__duration">0:00:00</span>
-          </div>
-          <div class="course-card__body">
-            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
-            <div class="course-card__meta">
-              <span class="course-card__tag">カテゴリ</span>
-              <span class="course-card__tag">初級</span>
-            </div>
-          </div>
-        </a>
-        <div class="course-card course-card--locked">
-          <div class="course-card__thumb">
-            <div class="course-card__thumb-placeholder"></div>
-            <div class="course-card__lock-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <span class="course-card__duration">0:00:00</span>
-          </div>
-          <div class="course-card__body">
-            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
-            <div class="course-card__meta">
-              <span class="course-card__tag">カテゴリ</span>
-              <span class="course-card__tag">中級</span>
-            </div>
-          </div>
-        </div>
-        <div class="course-card course-card--locked">
-          <div class="course-card__thumb">
-            <div class="course-card__thumb-placeholder"></div>
-            <div class="course-card__lock-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <span class="course-card__duration">0:00:00</span>
-          </div>
-          <div class="course-card__body">
-            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
-            <div class="course-card__meta">
-              <span class="course-card__tag">カテゴリ</span>
-              <span class="course-card__tag">中級</span>
-            </div>
-          </div>
-        </div>
-        <div class="course-card course-card--locked">
-          <div class="course-card__thumb">
-            <div class="course-card__thumb-placeholder"></div>
-            <div class="course-card__lock-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <span class="course-card__duration">0:00:00</span>
-          </div>
-          <div class="course-card__body">
-            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
-            <div class="course-card__meta">
-              <span class="course-card__tag">カテゴリ</span>
-              <span class="course-card__tag">応用</span>
-            </div>
-          </div>
-        </div>
-        <div class="course-card course-card--locked">
-          <div class="course-card__thumb">
-            <div class="course-card__thumb-placeholder"></div>
-            <div class="course-card__lock-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <span class="course-card__duration">0:00:00</span>
-          </div>
-          <div class="course-card__body">
-            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
-            <div class="course-card__meta">
-              <span class="course-card__tag">カテゴリ</span>
-              <span class="course-card__tag">応用</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="course-scroll" data-stage-scroll="2"></div>
     </section>
 
     <!-- Row 3 -->
     <section class="course-row reveal" data-stage="3">
       <div class="course-row__head">
         <h2 class="course-row__title">Stage 3</h2>
-        <a href="#" class="course-row__more">もっと見る →</a>
+        <a href="stage/3/index.html" class="course-row__more">もっと見る →</a>
       </div>
-      <div class="course-scroll">
-        <a href="course/index.html" class="course-card">
-          <div class="course-card__thumb">
-            <div class="course-card__thumb-placeholder"></div>
-            <span class="course-card__free-badge">無料</span>
-            <span class="course-card__duration">0:00:00</span>
-          </div>
-          <div class="course-card__body">
-            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
-            <div class="course-card__meta">
-              <span class="course-card__tag">カテゴリ</span>
-              <span class="course-card__tag">初級</span>
-            </div>
-          </div>
-        </a>
-        <div class="course-card course-card--locked">
-          <div class="course-card__thumb">
-            <div class="course-card__thumb-placeholder"></div>
-            <div class="course-card__lock-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <span class="course-card__duration">0:00:00</span>
-          </div>
-          <div class="course-card__body">
-            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
-            <div class="course-card__meta">
-              <span class="course-card__tag">カテゴリ</span>
-              <span class="course-card__tag">中級</span>
-            </div>
-          </div>
-        </div>
-        <div class="course-card course-card--locked">
-          <div class="course-card__thumb">
-            <div class="course-card__thumb-placeholder"></div>
-            <div class="course-card__lock-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <span class="course-card__duration">0:00:00</span>
-          </div>
-          <div class="course-card__body">
-            <p class="course-card__title">講座タイトルが入ります（サンプル）</p>
-            <div class="course-card__meta">
-              <span class="course-card__tag">カテゴリ</span>
-              <span class="course-card__tag">中級</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="course-scroll" data-stage-scroll="3"></div>
     </section>
 
   </main>
@@ -366,7 +166,9 @@
 </div>
 
 <script src="js/video-modal.js?v=2"></script>
-<script src="js/unlock.js?v=2"></script>
+<script src="js/courses-data.js?v=1"></script>
+<script src="js/courses.js?v=1"></script>
+<script src="js/unlock.js?v=3"></script>
 <script src="js/main.js"></script>
 <script src="js/popup.js?v=1"></script>
 </body>

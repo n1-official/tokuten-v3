@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stage 3 - Execution | AI Mastery</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body {
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    background: #050507;
+    color: #f5f5f7;
+    min-height: 100vh;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+  a { text-decoration: none; color: inherit; }
+
+  /* Header */
+  .stage-header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    background: linear-gradient(180deg, rgba(5,5,7,0.9) 0%, rgba(5,5,7,0.5) 70%, transparent 100%);
+    backdrop-filter: blur(8px);
+  }
+  .stage-header__inner {
+    max-width: 1440px; margin: 0 auto;
+    padding: 22px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .stage-header__back {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 600;
+    color: rgba(245,245,247,0.85);
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .stage-header__back:hover { color: #fff; }
+  .stage-header__back svg { width: 14px; height: 14px; }
+  .stage-header__brand {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600; font-size: 12px;
+    letter-spacing: 0.18em;
+    color: rgba(245,245,247,0.9);
+  }
+  .stage-header__brand strong {
+    background: linear-gradient(90deg, #f472b6, #38bdf8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+  }
+
+  /* Hero — full bleed cinematic */
+  .hero {
+    position: relative;
+    min-height: 88vh;
+    display: flex; align-items: flex-end;
+    padding: 0 48px 96px;
+    overflow: hidden;
+  }
+  @media (max-width: 720px) {
+    .hero { min-height: 80vh; padding: 0 24px 56px; }
+  }
+  .hero__bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(244,114,182,0.22) 0%, transparent 45%),
+      radial-gradient(circle at 80% 70%, rgba(56,189,248,0.18) 0%, transparent 45%),
+      radial-gradient(circle at 50% 50%, rgba(168,85,247,0.1) 0%, transparent 60%),
+      #050507;
+    z-index: -2;
+  }
+  .hero__bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, transparent 50%, rgba(5,5,7,0.85) 100%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+    background-size: cover, 200px 200px;
+    opacity: 1, 0.04;
+    mix-blend-mode: overlay;
+  }
+  .hero__inner {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .hero__eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.32em;
+    color: rgba(245,245,247,0.7);
+    margin-bottom: 28px;
+    display: inline-flex; align-items: center; gap: 14px;
+  }
+  .hero__eyebrow::before {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #f472b6;
+    box-shadow: 0 0 12px rgba(244,114,182,0.8);
+  }
+  .hero__title {
+    font-size: clamp(3rem, 8vw, 6.4rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+    margin-bottom: 32px;
+    max-width: 1100px;
+    color: #fff;
+  }
+  .hero__title em {
+    font-style: normal;
+    background: linear-gradient(120deg, #f472b6 0%, #c084fc 50%, #38bdf8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero__lead {
+    font-size: 17px;
+    color: rgba(245,245,247,0.7);
+    line-height: 1.85;
+    max-width: 580px;
+    margin-bottom: 48px;
+  }
+  .hero__meta {
+    display: flex; gap: 56px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    flex-wrap: wrap;
+  }
+  .hero__meta-item dt {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.25em;
+    color: rgba(245,245,247,0.5);
+    margin-bottom: 8px;
+  }
+  .hero__meta-item dd {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px; font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+
+  /* Featured / first episode */
+  .featured-wrap {
+    max-width: 1440px;
+    margin: -56px auto 0;
+    padding: 0 48px;
+    position: relative;
+    z-index: 2;
+  }
+  @media (max-width: 720px) { .featured-wrap { padding: 0 24px; margin-top: -24px; } }
+  .featured {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #0d0d12;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: all 0.4s ease;
+    position: relative;
+  }
+  @media (max-width: 900px) {
+    .featured { grid-template-columns: 1fr; }
+  }
+  .featured:hover {
+    border-color: rgba(244,114,182,0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 30px 60px rgba(244,114,182,0.15);
+  }
+  .featured__thumb {
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden;
+    background: #1a1a22;
+  }
+  .featured__thumb-img {
+    position: absolute; inset: 0;
+    background-size: cover;
+    background-position: center;
+  }
+  .featured__thumb-fallback {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 70% 30%, rgba(244,114,182,0.35) 0%, transparent 55%),
+      radial-gradient(circle at 30% 70%, rgba(56,189,248,0.25) 0%, transparent 55%),
+      linear-gradient(135deg, #1a1a22 0%, #0d0d12 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .featured__thumb-fallback::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .featured__thumb-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 120px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.1);
+    letter-spacing: -0.05em;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+  }
+  .featured__thumb-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, transparent 50%, rgba(13,13,18,0.5) 100%);
+    z-index: 2;
+  }
+  .featured__play {
+    position: absolute;
+    bottom: 24px; left: 24px;
+    width: 56px; height: 56px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 3;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    transition: transform 0.3s;
+  }
+  .featured:hover .featured__play { transform: scale(1.08); }
+  .featured__play svg { width: 18px; height: 18px; color: #050507; margin-left: 3px; }
+  .featured__badge {
+    position: absolute;
+    top: 24px; left: 24px;
+    z-index: 3;
+    background: rgba(244,114,182,0.92);
+    color: #fff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    padding: 6px 12px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+  .featured__body {
+    padding: 56px 48px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  @media (max-width: 720px) { .featured__body { padding: 32px 24px; } }
+  .featured__eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.25em;
+    color: #f472b6;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+  }
+  .featured__title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 22px;
+    color: #fff;
+    letter-spacing: -0.02em;
+  }
+  @media (max-width: 720px) { .featured__title { font-size: 24px; } }
+  .featured__desc {
+    font-size: 14px;
+    color: rgba(245,245,247,0.65);
+    line-height: 1.85;
+    margin-bottom: 28px;
+  }
+  .featured__cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: #fff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .featured__cta svg { width: 14px; height: 14px; transition: transform 0.25s; }
+  .featured:hover .featured__cta svg { transform: translateX(6px); }
+
+  /* Grid */
+  .courses {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 96px 48px 120px;
+  }
+  @media (max-width: 720px) { .courses { padding: 64px 24px 80px; } }
+  .courses__head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  .courses__head h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.2em;
+    color: #fff;
+    text-transform: uppercase;
+  }
+  .courses__head span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    color: rgba(245,245,247,0.45);
+    letter-spacing: 0.18em;
+  }
+  .courses__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px 24px;
+  }
+  @media (max-width: 1024px) {
+    .courses__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .courses__grid { grid-template-columns: 1fr; }
+  }
+
+  .episode {
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  .episode:hover { transform: translateY(-4px); }
+  .episode:hover .episode__title { color: #fff; }
+  .episode:hover .episode__thumb-overlay { opacity: 0.4; }
+  .episode:hover .episode__thumb-play { opacity: 1; transform: scale(1); }
+  .episode.is-locked { cursor: not-allowed; }
+  .episode.is-locked:hover { transform: none; }
+  .episode.is-locked .episode__thumb-img,
+  .episode.is-locked .episode__thumb-fallback { filter: grayscale(0.7) brightness(0.5); }
+  .episode.is-locked:hover .episode__thumb-overlay { opacity: 0.7; }
+
+  .episode__thumb {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #1a1a22;
+    margin-bottom: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .episode__thumb-img {
+    position: absolute; inset: 0;
+    background-size: cover;
+    background-position: center;
+  }
+  .episode__thumb-fallback {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 60% 40%, rgba(168,85,247,0.2) 0%, transparent 60%),
+      linear-gradient(135deg, #1f1f2a 0%, #0d0d12 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .episode__thumb-fallback-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.12);
+    letter-spacing: -0.05em;
+    line-height: 1;
+  }
+  .episode__thumb-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.6) 100%);
+    z-index: 2;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+  }
+  .episode__thumb-num {
+    position: absolute;
+    top: 12px; left: 12px;
+    z-index: 3;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.95);
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(8px);
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .episode__thumb-duration {
+    position: absolute;
+    bottom: 12px; right: 12px;
+    z-index: 3;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+    background: rgba(0,0,0,0.7);
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+  .episode__thumb-play {
+    position: absolute;
+    bottom: 12px; left: 12px;
+    z-index: 3;
+    width: 36px; height: 36px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s;
+  }
+  .episode__thumb-play svg { width: 12px; height: 12px; color: #050507; margin-left: 1.5px; }
+  .episode__thumb-lock {
+    position: absolute; inset: 0;
+    z-index: 4;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .episode__thumb-lock-circle {
+    width: 48px; height: 48px;
+    background: rgba(13,13,18,0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(244,114,182,0.4);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .episode__thumb-lock-circle svg { width: 16px; height: 16px; color: #f472b6; }
+
+  .episode__meta {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: rgba(245,245,247,0.55);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .episode__level { color: #c084fc; }
+  .episode__title {
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: rgba(245,245,247,0.92);
+    transition: color 0.2s;
+    letter-spacing: -0.01em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 36px 48px;
+    text-align: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    color: rgba(245,245,247,0.4);
+    letter-spacing: 0.15em;
+  }
+</style>
+</head>
+<body>
+
+<header class="stage-header">
+  <div class="stage-header__inner">
+    <a href="../../index.html" class="stage-header__back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 12L6 8l4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      講座一覧へ
+    </a>
+    <span class="stage-header__brand">AI MASTERY · <strong>STAGE 03</strong></span>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero__bg"></div>
+  <div class="hero__inner">
+    <div class="hero__eyebrow">CHAPTER 03 · EXECUTION &amp; AUTOMATION</div>
+    <h1 class="hero__title">AIに任せて、<br><em>人生をスケールさせる。</em></h1>
+    <p class="hero__lead">
+      自動化、エージェント、副業の壁、消える仕事と残る仕事。
+      AIを「使う側」から「使い倒す側」に回るための、最も実践的なステージ。
+    </p>
+    <dl class="hero__meta">
+      <div class="hero__meta-item"><dt>EPISODES</dt><dd>10</dd></div>
+      <div class="hero__meta-item"><dt>ACCESS</dt><dd>PASSWORD</dd></div>
+      <div class="hero__meta-item"><dt>LEVEL</dt><dd>ADVANCED</dd></div>
+    </dl>
+  </div>
+</section>
+
+<div class="featured-wrap">
+  <div id="featured-slot"></div>
+</div>
+
+<section class="courses">
+  <div class="courses__head">
+    <h2>All Episodes</h2>
+    <span>EP_02 — EP_10</span>
+  </div>
+  <div class="courses__grid" id="grid-slot"></div>
+</section>
+
+<footer class="footer">
+  &copy; 2026 株式会社エヌイチ · ALL RIGHTS RESERVED
+</footer>
+
+<script src="../../js/courses-data.js?v=1"></script>
+<script src="../../js/unlock.js?v=3"></script>
+<script>
+  (function() {
+    const stage = '3'
+    const courses = (typeof COURSES !== 'undefined') ? COURSES[stage] : []
+    const unlocked = isStageUnlocked(stage)
+    const featuredSlot = document.getElementById('featured-slot')
+    const gridSlot = document.getElementById('grid-slot')
+    if (!courses.length) return
+
+    const featured = courses[0]
+    const rest = courses.slice(1)
+
+    // Featured (first episode)
+    {
+      const num = String(featured.no).padStart(2, '0')
+      const locked = isCourseLocked(stage, featured.no) && !unlocked
+      const wrap = locked
+        ? ['<div class="featured" style="cursor:not-allowed">', '</div>']
+        : [`<a href="../../course/index.html?stage=${stage}&no=${featured.no}" class="featured">`, '</a>']
+      const thumbContent = featured.thumb
+        ? `<div class="featured__thumb-img" style="background-image:url('${featured.thumb}')"></div>`
+        : `<div class="featured__thumb-fallback"><span class="featured__thumb-num">${num}</span></div>`
+
+      featuredSlot.innerHTML = wrap[0] + `
+        <div class="featured__thumb">
+          ${thumbContent}
+          <div class="featured__thumb-overlay"></div>
+          <span class="featured__badge">FREE PREVIEW</span>
+          <div class="featured__play"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2v12l10-6z"/></svg></div>
+        </div>
+        <div class="featured__body">
+          <div class="featured__eyebrow">EPISODE 01 · ${escapeHtml(featured.level)}</div>
+          <h2 class="featured__title">${escapeHtml(featured.title)}</h2>
+          <p class="featured__desc">${escapeHtml(featured.topics.slice(0, 3).join('。 '))}。</p>
+          <span class="featured__cta">
+            視聴する
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+      ` + wrap[1]
+    }
+
+    // Grid (rest)
+    gridSlot.innerHTML = rest.map((c) => {
+      const num = String(c.no).padStart(2, '0')
+      const locked = isCourseLocked(stage, c.no) && !unlocked
+      const wrap = locked
+        ? ['<div class="episode is-locked">', '</div>']
+        : [`<a href="../../course/index.html?stage=${stage}&no=${c.no}" class="episode">`, '</a>']
+      const thumbContent = c.thumb
+        ? `<div class="episode__thumb-img" style="background-image:url('${c.thumb}')"></div>`
+        : `<div class="episode__thumb-fallback"><span class="episode__thumb-fallback-num">${num}</span></div>`
+      const lockMark = locked
+        ? `<div class="episode__thumb-lock"><div class="episode__thumb-lock-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="1.5"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div></div>`
+        : `<div class="episode__thumb-play"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2v12l10-6z"/></svg></div>`
+
+      return wrap[0] + `
+        <div class="episode__thumb">
+          ${thumbContent}
+          <div class="episode__thumb-overlay"></div>
+          <span class="episode__thumb-num">EP_${num}</span>
+          <span class="episode__thumb-duration">0:00</span>
+          ${lockMark}
+        </div>
+        <div class="episode__meta">
+          <span class="episode__level">${escapeHtml(c.level)}</span>
+          <span>EPISODE ${num}</span>
+        </div>
+        <h3 class="episode__title">${escapeHtml(c.title)}</h3>
+      ` + wrap[1]
+    }).join('')
+
+    function escapeHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
+    }
+  })()
+</script>
+</body>
+</html>

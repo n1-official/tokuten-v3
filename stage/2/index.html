@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stage 2 - Strategy | AI Mastery</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700;900&family=Playfair+Display:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body {
+    font-family: 'Inter', 'Noto Serif JP', sans-serif;
+    background: #0c0d10;
+    color: #e8e6e1;
+    min-height: 100vh;
+    line-height: 1.5;
+  }
+  a { text-decoration: none; color: inherit; }
+
+  /* Header */
+  .stage-header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(12,13,16,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(212,175,55,0.12);
+  }
+  .stage-header__inner {
+    max-width: 1320px; margin: 0 auto;
+    padding: 18px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .stage-header__back {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 600;
+    color: #e8e6e1;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .stage-header__back:hover { color: #d4af37; }
+  .stage-header__back svg { width: 14px; height: 14px; }
+  .stage-header__brand {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700; font-size: 15px;
+    color: #d4af37; letter-spacing: 0.16em;
+  }
+
+  /* Hero */
+  .hero {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 120px 48px 80px;
+    border-bottom: 1px solid rgba(232,230,225,0.1);
+  }
+  @media (max-width: 720px) { .hero { padding: 80px 24px 56px; } }
+  .hero__rule {
+    width: 64px; height: 1px;
+    background: #d4af37;
+    margin-bottom: 32px;
+  }
+  .hero__eyebrow {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.32em;
+    color: #d4af37;
+    margin-bottom: 28px;
+  }
+  .hero__title {
+    font-family: 'Playfair Display', 'Noto Serif JP', serif;
+    font-size: clamp(2.8rem, 6.5vw, 5.4rem);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.05;
+    margin-bottom: 36px;
+    color: #f5f3ee;
+    max-width: 1100px;
+  }
+  .hero__title em {
+    font-style: italic;
+    font-weight: 400;
+    color: #d4af37;
+  }
+  .hero__lead {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 17px;
+    color: #b8b3a8;
+    line-height: 1.95;
+    max-width: 640px;
+    font-weight: 400;
+  }
+  .hero__meta {
+    display: flex; gap: 80px;
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(232,230,225,0.1);
+    flex-wrap: wrap;
+  }
+  .hero__meta-item dt {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.25em;
+    color: #82786b;
+    margin-bottom: 8px;
+  }
+  .hero__meta-item dd {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 600;
+    color: #d4af37;
+    letter-spacing: -0.01em;
+  }
+
+  /* Courses */
+  .courses {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 88px 48px 120px;
+  }
+  @media (max-width: 720px) { .courses { padding: 56px 24px 80px; } }
+  .courses__head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 64px;
+  }
+  .courses__head h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #f5f3ee;
+    letter-spacing: 0.02em;
+  }
+  .courses__head h2::before {
+    content: '— ';
+    color: #d4af37;
+  }
+  .courses__head span {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.2em;
+    color: #82786b;
+  }
+
+  .courses__list {
+    display: flex; flex-direction: column;
+  }
+  .course {
+    display: grid;
+    grid-template-columns: 60px 1.1fr 1.4fr;
+    gap: 40px;
+    padding: 36px 0;
+    border-top: 1px solid rgba(232,230,225,0.1);
+    align-items: center;
+    transition: background 0.3s ease;
+    position: relative;
+  }
+  .course:last-child { border-bottom: 1px solid rgba(232,230,225,0.1); }
+  .course:hover { background: rgba(212,175,55,0.025); }
+  .course:hover .course__thumb-overlay { opacity: 0; }
+  .course:hover .course__title { color: #d4af37; }
+  .course:hover .course__num { color: #d4af37; }
+  .course.is-locked { cursor: not-allowed; }
+  .course.is-locked:hover { background: transparent; }
+  .course.is-locked:hover .course__title { color: #b8b3a8; }
+  .course.is-locked .course__thumb-img,
+  .course.is-locked .course__thumb-fallback { filter: grayscale(0.6) brightness(0.55); }
+
+  @media (max-width: 900px) {
+    .course { grid-template-columns: 1fr; gap: 16px; padding: 32px 0; }
+  }
+
+  .course__num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #82786b;
+    line-height: 1;
+    transition: color 0.25s;
+    letter-spacing: -0.02em;
+  }
+  @media (max-width: 900px) { .course__num { font-size: 22px; } }
+
+  .course__thumb {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 2px;
+    overflow: hidden;
+    background: #1a1a1f;
+    border: 1px solid rgba(212,175,55,0.15);
+  }
+  .course__thumb-img {
+    position: absolute; inset: 0;
+    background-size: cover;
+    background-position: center;
+  }
+  .course__thumb-fallback {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(212,175,55,0.18) 0%, transparent 60%),
+      linear-gradient(135deg, #16181d 0%, #0c0d10 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .course__thumb-fallback::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(212,175,55,0.04) 1px, transparent 1px);
+    background-size: 100% 24px;
+  }
+  .course__thumb-fallback-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: rgba(212,175,55,0.25);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    position: relative; z-index: 1;
+  }
+  .course__thumb-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(12,13,16,0.4), rgba(12,13,16,0.1));
+    transition: opacity 0.4s ease;
+    z-index: 2;
+  }
+  .course__thumb-corner {
+    position: absolute; top: 10px; right: 10px;
+    z-index: 3;
+    font-family: 'Inter', sans-serif;
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 0.2em;
+    color: #d4af37;
+    border: 1px solid rgba(212,175,55,0.5);
+    padding: 3px 8px;
+    background: rgba(12,13,16,0.5);
+  }
+  .course__thumb-lock {
+    position: absolute; inset: 0;
+    z-index: 4;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .course__thumb-lock-circle {
+    width: 56px; height: 56px;
+    border: 1px solid rgba(212,175,55,0.6);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(12,13,16,0.7);
+    backdrop-filter: blur(4px);
+  }
+  .course__thumb-lock-circle svg { width: 18px; height: 18px; color: #d4af37; }
+
+  .course__body {}
+  .course__eyebrow {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.25em;
+    color: #d4af37;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+  .course__title {
+    font-family: 'Playfair Display', 'Noto Serif JP', serif;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #f5f3ee;
+    margin-bottom: 18px;
+    letter-spacing: -0.005em;
+    transition: color 0.25s;
+  }
+  @media (max-width: 900px) { .course__title { font-size: 21px; } }
+  .course__excerpt {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 14px;
+    color: #b8b3a8;
+    line-height: 1.85;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .course__cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: #d4af37;
+    text-transform: uppercase;
+  }
+  .course__cta svg {
+    width: 14px; height: 14px;
+    transition: transform 0.25s;
+  }
+  .course:hover:not(.is-locked) .course__cta svg { transform: translateX(4px); }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid rgba(232,230,225,0.08);
+    padding: 36px 48px;
+    text-align: center;
+    font-size: 11px;
+    color: #82786b;
+    letter-spacing: 0.1em;
+  }
+</style>
+</head>
+<body>
+
+<header class="stage-header">
+  <div class="stage-header__inner">
+    <a href="../../index.html" class="stage-header__back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 12L6 8l4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      講座一覧へ
+    </a>
+    <span class="stage-header__brand">AI MASTERY · CHAPTER Ⅱ</span>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero__rule"></div>
+  <div class="hero__eyebrow">CHAPTER 02 · STRATEGY &amp; DECISION</div>
+  <h1 class="hero__title">あなたが選ぶべき道を、<br><em>見極める。</em></h1>
+  <p class="hero__lead">
+    どのルートで稼ぐのか、いつ決断するのか、何に投資するのか——。
+    エヌイチで実際に成果を出した人たちの「思考のプロセス」を、徹底的に解剖する10話。
+  </p>
+  <dl class="hero__meta">
+    <div class="hero__meta-item"><dt>EPISODES</dt><dd>10</dd></div>
+    <div class="hero__meta-item"><dt>ACCESS</dt><dd>PASSWORD</dd></div>
+    <div class="hero__meta-item"><dt>LEVEL</dt><dd>初級—応用</dd></div>
+  </dl>
+</section>
+
+<section class="courses">
+  <div class="courses__head">
+    <h2>Episodes</h2>
+    <span>01 / 10</span>
+  </div>
+  <div class="courses__list" id="course-list"></div>
+</section>
+
+<footer class="footer">
+  &copy; 2026 株式会社エヌイチ · ALL RIGHTS RESERVED
+</footer>
+
+<script src="../../js/courses-data.js?v=1"></script>
+<script src="../../js/unlock.js?v=3"></script>
+<script>
+  (function() {
+    const stage = '2'
+    const list = document.getElementById('course-list')
+    const courses = (typeof COURSES !== 'undefined') ? COURSES[stage] : []
+    const unlocked = isStageUnlocked(stage)
+
+    list.innerHTML = courses.map((c) => {
+      const num = String(c.no).padStart(2, '0')
+      const locked = isCourseLocked(stage, c.no) && !unlocked
+      const wrapStart = locked
+        ? `<div class="course is-locked">`
+        : `<a href="../../course/index.html?stage=${stage}&no=${c.no}" class="course">`
+      const wrapEnd = locked ? `</div>` : `</a>`
+      const thumbContent = c.thumb
+        ? `<div class="course__thumb-img" style="background-image:url('${c.thumb}')"></div>`
+        : `<div class="course__thumb-fallback"><div class="course__thumb-fallback-mark">${num}</div></div>`
+      const lockOverlay = locked
+        ? `<div class="course__thumb-lock"><div class="course__thumb-lock-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="11" width="16" height="10" rx="1.5"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div></div>`
+        : ''
+      const cta = locked
+        ? `<span class="course__cta">LOCKED · STAGE 2 PASSWORD</span>`
+        : `<span class="course__cta">VIEW EPISODE <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>`
+
+      return wrapStart + `
+        <div class="course__num">${num}</div>
+        <div class="course__thumb">
+          ${thumbContent}
+          <div class="course__thumb-overlay"></div>
+          <span class="course__thumb-corner">EP ${num}</span>
+          ${lockOverlay}
+        </div>
+        <div class="course__body">
+          <div class="course__eyebrow">${escapeHtml(c.level)} · 0:00:00</div>
+          <h3 class="course__title">${escapeHtml(c.title)}</h3>
+          <p class="course__excerpt">${escapeHtml(c.topics.slice(0, 2).join('。 '))}</p>
+          ${cta}
+        </div>
+      ` + wrapEnd
+    }).join('')
+
+    function escapeHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
+    }
+  })()
+</script>
+</body>
+</html>
