@@ -105,12 +105,25 @@
   transform: translateY(0);
 }
 
+/* 文字単位ラップ：未表示は opacity:0、is-revealed で表示 */
+.hero.is-typewriter .t-char {
+  opacity: 0;
+  transition: opacity 0.05s linear;
+}
+.hero.is-typewriter .t-char.is-revealed {
+  opacity: 1;
+}
+
 .hero__cursor {
   display: inline-block;
-  margin-left: 4px;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.9);
-  animation: blink 0.7s step-end infinite;
+  width: 0.08em;
+  height: 1em;
+  margin: 0 0.04em -0.12em 0.02em;
+  background: rgba(255, 255, 255, 0.92);
+  vertical-align: baseline;
+  font-size: 0;
+  color: transparent;
+  animation: blink 0.6s step-end infinite;
 }
 .hero__cursor.is-fading {
   animation: none;
