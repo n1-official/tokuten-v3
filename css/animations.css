@@ -84,6 +84,40 @@
 .hero-anim--subtitle { animation: fadeInUp   0.8s ease 1.0s both; }
 .hero-anim--actions  { animation: fadeInUp   0.7s ease 1.35s both; }
 
+/* Typewriter mode (JSが is-typewriter を hero に付与した時のみ有効) */
+.hero.is-typewriter .hero-anim--title {
+  animation: none;
+  opacity: 1;
+}
+.hero.is-typewriter .hero-anim--subtitle,
+.hero.is-typewriter .hero-anim--actions {
+  animation: none;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.hero.is-typewriter .hero-anim--actions {
+  transition-delay: 0.18s;
+}
+.hero.is-typewriter .hero-anim--subtitle.is-typed-in,
+.hero.is-typewriter .hero-anim--actions.is-typed-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero__cursor {
+  display: inline-block;
+  margin-left: 4px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
+  animation: blink 0.7s step-end infinite;
+}
+.hero__cursor.is-fading {
+  animation: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

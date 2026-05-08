@@ -10,14 +10,26 @@
     iframe.src = iframe.src;
   }
 
+  function todayKey() {
+    const d = new Date();
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     const overlay = document.getElementById('video-modal');
     const closeBtn = document.getElementById('video-modal-close');
 
-    // Show immediately (every time for now)
-    setTimeout(function () {
-      overlay.classList.add('is-open');
-    }, 400);
+    // 1日1回だけ表示（同じブラウザで当日2回目以降はスキップ）
+    const STORAGE_KEY = 'welcomeVideoLastShown';
+    const lastShown = localStorage.getItem(STORAGE_KEY);
+    const today = todayKey();
+
+    if (lastShown !== today) {
+      setTimeout(function () {
+        overlay.classList.add('is-open');
+        localStorage.setItem(STORAGE_KEY, today);
+      }, 400);
+    }
 
     closeBtn.addEventListener('click', closeModal);
 
