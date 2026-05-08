@@ -89,14 +89,17 @@
     <!-- Unlock Banner -->
     <div class="unlock-banner reveal">
       <div class="unlock-banner__text">
-        <p class="unlock-banner__title">予約完了された方へ</p>
-        <p class="unlock-banner__desc">LINEでお送りしたパスワードを入力するとすべての講座が解放されます。</p>
+        <p class="unlock-banner__title">予約・商談された方へ</p>
+        <p class="unlock-banner__desc">配布されたパスワードを入力すると、対応するステージの講座が解放されます。</p>
       </div>
-      <button id="unlock-open-btn-2" class="btn btn--primary">パスワードを入力</button>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button data-unlock-stage="2" class="btn btn--primary">Stage 2 を解放</button>
+        <button data-unlock-stage="3" class="btn btn--outline">Stage 3 を解放</button>
+      </div>
     </div>
 
     <!-- Row 1 -->
-    <section class="course-row reveal">
+    <section class="course-row reveal" data-stage="1">
       <div class="course-row__head">
         <h2 class="course-row__title">Stage 1</h2>
         <a href="#" class="course-row__more">もっと見る →</a>
@@ -184,7 +187,7 @@
     </section>
 
     <!-- Row 2 -->
-    <section class="course-row reveal">
+    <section class="course-row reveal" data-stage="2">
       <div class="course-row__head">
         <h2 class="course-row__title">Stage 2</h2>
         <a href="#" class="course-row__more">もっと見る →</a>
@@ -272,7 +275,7 @@
     </section>
 
     <!-- Row 3 -->
-    <section class="course-row reveal">
+    <section class="course-row reveal" data-stage="3">
       <div class="course-row__head">
         <h2 class="course-row__title">Stage 3</h2>
         <a href="#" class="course-row__more">もっと見る →</a>
@@ -369,17 +372,8 @@
 </div>
 
 <script src="js/video-modal.js?v=2"></script>
-<script src="js/unlock.js"></script>
+<script src="js/unlock.js?v=2"></script>
 <script src="js/main.js"></script>
 <script src="js/popup.js?v=1"></script>
-<script>
-  // 2つ目の解放ボタン
-  document.getElementById('unlock-open-btn-2')?.addEventListener('click', () => {
-    document.getElementById('unlock-modal').classList.add('is-open')
-  })
-  document.getElementById('unlock-cancel-btn')?.addEventListener('click', () => {
-    document.getElementById('unlock-modal').classList.remove('is-open')
-  })
-</script>
 </body>
 </html>
